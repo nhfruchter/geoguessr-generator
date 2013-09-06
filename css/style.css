@@ -1,0 +1,29 @@
+html, body { height: 100%; margin: 0; padding: 0; }
+body { font: 1em sans-serif; }
+input, button { 
+	border: none;
+	padding: 0.5em;
+}
+label { 
+	line-height: 1.65em; 
+	border: none; 
+	font-weight: 200; 
+	padding-right: 1em;
+}
+button { color: #fff; }
+button.go-to { background: #2E7899; display: none}
+button.set { background: #33962A; color: #fff; }
+#map-container { height: 100%; }
+#form-container { 
+	position: absolute; 
+		margin: 0 auto;
+		top: 5%; 
+		right: 1%;
+	z-index: 99; 
+	width: 19em;
+	padding: 1em;
+	background-color: transparent;
+	background-color: rgba(255, 255, 255, 0.8); 
+} 
+.error { color: red; font-size: 0.5em; }
+.error-box { padding: 1em; background: #FFD0D3; color: #570008; font-size: 0.75em; }

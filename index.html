@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Better GeoSettr</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<script src="js/jquery.urlshortener.js"></script>
+	<script src="js/jquery.base64.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+</head>
+<body>	
+	<div id="form-container">
+		<form id="geoform" method="get" action="javascript:">
+			<p><label for="time-limit">Seconds per round </label> <input type="text" id="time-limit" value="0" size="4" required/></p>
+			<p class="step 1 active"><label>Round 1</label><input type="text" id="1" required/> <button class="1 go-to">Go to</button><button class="1 set">Set</button></p>
+			<p class="step 2"><label>Round 2</label><input type="text" id="2" required/> <button class="2 go-to">Go to</button><button class="2 set">Set</button></p>
+			<p class="step 3"><label>Round 3</label><input type="text" id="3" required/> <button class="3 go-to">Go to</button><button class="3 set">Set</button></p>
+			<p class="step 4"><label>Round 4</label><input type="text" id="4" required/> <button class="4 go-to">Go to</button><button class="4 set">Set</button></p>
+			<p class="step 5"><label>Round 5</label><input type="text" id="5" required /> <button class="5 go-to">Go to</button><button class="5 set">Set</button></p>
+			<p class="step generate-link"><button id="generate">Generate Link</button></p>
+		</form>
+	</div>
+	<div id="map-container"></div>
+</body>
+</html>	
+<!-- GPL v3 nathaniel fruchter / fruchter@cmu.edu -->
