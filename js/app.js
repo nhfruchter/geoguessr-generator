@@ -98,8 +98,9 @@ $(document).ready(function(){
 	});
 	
 	//////// event handlers: set button /////////
-	$("button.set").click(function(){
-		thisround = $(this).attr('class')[0];
+	$(".step input").focusout(function(){
+//		thisround = $(this).attr('class')[0];
+		thisround = $(this).id;
 		addressBox = $("input#" + thisround)
 		address = addressBox.val();
 		
@@ -114,7 +115,7 @@ $(document).ready(function(){
 			var marker = new google.maps.Marker( {map: map, position: map.getStreetView().position } );
 			map.setCenter( map.getStreetView());
 			debugger;
-		} else {
+		} else if ( address == undefined ){
 			// geocode address, check if SV available, add
 			new google.maps.Geocoder().geocode( {'address': address}, function(results, status) {
 				if ( status == google.maps.GeocoderStatus.OK ) {
