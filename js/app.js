@@ -98,24 +98,24 @@ $(document).ready(function(){
 	});
 	
 	//////// event handlers: set button /////////
-	$(".step input").focusout(function(){
-//		thisround = $(this).attr('class')[0];
-		thisround = $(this).id;
+	$("button.set").click(function(){
+		thisround = $(this).attr('class')[0];
 		addressBox = $("input#" + thisround)
 		address = addressBox.val();
+		svObj = map.getStreetView()
 		
-		if ( map.getStreetView().getVisible() == true ) {
+		if ( svObj.getVisible() == true ) {
 			// if you're in a streetview and hit set, grab the location from there
-			streetLat = map.getStreetView().position.ob;
-			streetLng = map.getStreetView().position.pb;
+			streetLat = svObj.position.lat()
+			streetLng = svObj.position.lng()
 			rounds[thisround-1] = [thisround, streetLat, streetLng];
 			addressBox.val(streetLat + ", " + streetLng);
 			
 			// and add it; no validation or coding needed since SV active
 			var marker = new google.maps.Marker( {map: map, position: map.getStreetView().position } );
 			map.setCenter( map.getStreetView());
-			debugger;
-		} else if ( address == undefined ){
+
+		} else {
 			// geocode address, check if SV available, add
 			new google.maps.Geocoder().geocode( {'address': address}, function(results, status) {
 				if ( status == google.maps.GeocoderStatus.OK ) {
@@ -131,7 +131,7 @@ $(document).ready(function(){
 							var marker = new google.maps.Marker( {map: map, position: searchResult} );
 
 							// add to rounds queue
-							rounds[thisround-1] = [thisround, svSnapLocation.ob, svSnapLocation.pb];				
+							rounds[thisround-1] = [thisround, svSnapLocation.lat(), svSnapLocation.lng()];				
 						} else {
 							displayError('Oops! No street view at this location. Please try somewhere else.');
 							addressBox.val("");
@@ -149,7 +149,7 @@ $(document).ready(function(){
 	$("#generate").click(function(){
 		if ( Object.size(rounds) != 5 ) {
 			displayError("Please complete the form before generating a link.");
-			debugger;
+
 		} else {
 			var challenge = {
 				"isSyncChallenge": true,
